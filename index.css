@@ -71,6 +71,7 @@ body {
   border: 3px solid black;
   margin-left: 2%;
   margin-right: 2%;
+  min-height: 50px;
 }
 
 .line {
@@ -132,7 +133,7 @@ body {
   margin-left: 1rem;
 }
 
-#remove-book {
+.remove-books {
   margin-right: 2%;
   background-color: white;
   position: absolute;
