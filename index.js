@@ -1,4 +1,4 @@
-import Awesomebooks from "./modules/Awsome.js";
+import * as Awesomebooks from "./modules/Awsome.js";
 import {
   link,
   addNew,
@@ -11,7 +11,7 @@ import { DateTime } from "./modules/luxon.js";
 
 // Add date
 document.addEventListener("DOMContentLoaded", () => {
-  const now = DateTime.now();
+  const now = DateTime.now().toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);;
 
   document.querySelector(".date").innerHTML = now;
 });

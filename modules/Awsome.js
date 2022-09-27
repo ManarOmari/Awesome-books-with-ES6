@@ -11,30 +11,24 @@ export default class Awesomebooks {
   }
 
   // Method to display books
-  static createBooks() {
-    const booksContainer = document.querySelector(".books-container");
-    const displayBooks = bookData
-      .map(
-        (
-          bookList
-        ) => {`<div class="removed" id="remove"><p class="book-name">${bookList.title} By ${bookList.title}</p>
-  <button type="button" onclick="Awesomebooks.delBook(${bookList.id})" id="remove-book">Remove</button><hr></div>
-  `}
-      )
-      .join("");
+   static createBooks = () => {
+    const booksContainer = document.querySelector('.books-container');
+    const displayBooks = bookData.map((bookList) => `<div class="removed" id="remove"><p class="book-name">"${bookList.title}" By ${bookList.author}</p>
+      <button type="button"  class="remove-books" onclick="${delBook}" id="${bookList.id}">Remove</button><hr></div>
+      `).join('');
     booksContainer.innerHTML = displayBooks;
-  }
+  };
 
   // Method to add books
-  static addBook(bookItem) {
+   addBook= (bookItem) => {
     bookData.push(bookItem);
     // eslint-disable-next-line no-use-before-define
     sendToLocal("storageBooksData", bookData);
-  }
+  };
 
   // Method to delete books
-  static delBook() {
-    const rmvBtn = document.querySelectorAll(".remove-book");
+  delBook =()  =>{
+    const rmvBtn = document.querySelectorAll("#${bookList.id}").value;
     rmvBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const filteredBooks = bookData.filter(
@@ -48,24 +42,22 @@ export default class Awesomebooks {
     });
   }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
-  Awesomebooks.createBooks();
+  Awesomebooks.createBooks;
 });
 
 // function to send to local storage
 function sendToLocal(a, b) {
   localStorage.setItem(a, JSON.stringify(b));
-  Awesomebooks.createBooks();
+  Awesomebooks.createBooks;
 }
 
-document.querySelector("#add-book-form").addEventListener("submit", (e) => {
+document.getElementById('add-book-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  const bookObject = new Awesomebooks(
-    bookData.length,
-    document.querySelector("#book-title").value,
-    document.querySelector("#book-author").value
-  );
-  Awesomebooks.addBook(bookObject);
-  document.querySelector("#book-title").value = "";
-  document.querySelector("#book-author").value = "";
+  const bookObject = new Awesomebooks(bookData.length, document.getElementById('book-title').value, document.getElementById('book-author').value);
+  Awesomebooks.addBook=(bookObject);
+  document.getElementById('book-title').value = '';
+  document.getElementById('book-author').value = '';
 });
+
